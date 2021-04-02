@@ -88,7 +88,6 @@ function callme(e){
         cells = e.target.parentElement.parentElement.parentElement.cells;
     }
 
-    debugger;
 
     let sno = cells[0].innerHTML;
     
