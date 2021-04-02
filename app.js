@@ -26,13 +26,47 @@ function getTeams(e){
     let teams = getTeamsForGivenDate(chosenDate);
 
     if (teams.length > 0){
-        teams.forEach(function(value){
+        teams.forEach(function(value, index){
             let row = tbodyRef.insertRow();
             for(key in value){
                 let cell = row.insertCell();
                 let text = document.createTextNode(value[key]);
                 cell.appendChild(text);
             }
+
+            let abc = row.insertCell();
+            let abcinput = document.createElement('input');
+            let abclabel = document.createElement('label');
+            let abcspan = document.createElement('span');
+            abcinput.setAttribute('type','checkbox');
+            abcinput.setAttribute('id', 'abccb'+index );
+            //abclabel.setAttribute('for', 'cb'+index );
+
+            abclabel.appendChild(abcinput);
+            abclabel.appendChild(abcspan);
+            abc.appendChild(abclabel);
+
+
+
+            let gmd = row.insertCell();
+            let gmdinput = document.createElement('input');
+            let gmdlabel = document.createElement('label');
+            let gmdspan = document.createElement('span');
+            gmdinput.setAttribute('type','checkbox');
+            gmdinput.setAttribute('id', 'gmdcb'+index );
+            //abclabel.setAttribute('for', 'cb'+index );
+
+            gmdlabel.appendChild(gmdinput);
+            gmdlabel.appendChild(gmdspan);
+            gmd.appendChild(gmdlabel);
+
+
+            let button = row.insertCell();
+            let buttonElement = document.createElement('a');
+            buttonElement.onclick = function(e){callme(e)};
+            buttonElement.className = 'waves-effect waves-light btn-small';
+            buttonElement.innerHTML = '<i class="material-icons">calculate</i>';
+            button.appendChild(buttonElement);
         });
     }else{
         console.log('no data');
@@ -42,6 +76,32 @@ function getTeams(e){
 
   
     e.preventDefault();
+}
+
+function callme(e){
+    
+    let cells;
+    if(e.target.classList.contains('btn-small')){
+        cells = e.target.parentElement.parentElement.cells;
+    }
+    if(e.target.classList.contains('material-icons')){
+        cells = e.target.parentElement.parentElement.parentElement.cells;
+    }
+
+    debugger;
+
+    let sno = cells[0].innerHTML;
+    
+    let cellLength = cells.length -3;
+    for(let i=1; i < cellLength; i++ ){
+        console.log(cells[i].innerHTML);
+    }
+
+    let abcValue = document.getElementById('abccb'+sno).checked;
+    console.log((abcValue));
+
+    let gmdValue = document.getElementById('gmdcb'+sno).checked;
+    console.log((gmdValue));
 }
 
 function getTeamsForGivenDate(date){

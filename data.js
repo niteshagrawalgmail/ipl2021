@@ -3,6 +3,7 @@ const data =  [
 			"date": "31-03-2021",
 			"teams": [
 				{
+					"sno": 0,
 					"player": "Nitesh",
 					"highRankTeam": "RCB",
 					"lowRankTeam": "CSK",
@@ -10,6 +11,7 @@ const data =  [
 					"lowTeamPoint": 1
 				},
 				{
+					"sno": 1,
 					"player": "Adarsh",
 					"highRankTeam": "RCB",
 					"lowRankTeam": "CSK",
@@ -17,6 +19,7 @@ const data =  [
 					"lowTeamPoint": 3
 				},
 				{
+					"sno": 2,
 					"player": "Kinshuk",
 					"highRankTeam": "RCB",
 					"lowRankTeam": "CSK",
@@ -24,6 +27,7 @@ const data =  [
 					"lowTeamPoint": 2
 				},
 				{
+					"sno": 3,
 					"player": "Pallu",
 					"highRankTeam": "CSK",
 					"lowRankTeam": "RCB",
@@ -31,6 +35,7 @@ const data =  [
 					"lowTeamPoint": 1
 				},
 				{
+					"sno": 4,
 					"player": "Pandey",
 					"highRankTeam": "CSK",
 					"lowRankTeam": "RCB",
@@ -43,6 +48,7 @@ const data =  [
 			"date": "01-04-2021",
 			"teams": [
 			{
+				    "sno": 0,
 					"player": "Nitesh",
 					"highRankTeam": "DD",
 					"lowRankTeam": "MI",
@@ -50,6 +56,7 @@ const data =  [
 					"lowTeamPoint": 4
 				},
 				{
+					"sno": 1,
 					"player": "Adarsh",
 					"highRankTeam": "MI",
 					"lowRankTeam": "DD",
@@ -57,6 +64,7 @@ const data =  [
 					"lowTeamPoint": 2
 				},
 				{
+					"sno": 2,
 					"player": "Kinshuk",
 					"highRankTeam": "DD",
 					"lowRankTeam": "MI",
@@ -64,6 +72,7 @@ const data =  [
 					"lowTeamPoint": 2
 				},
 				{
+					"sno": 3,
 					"player": "Pallu",
 					"highRankTeam": "MI",
 					"lowRankTeam": "DD",
@@ -71,6 +80,7 @@ const data =  [
 					"lowTeamPoint": 3
 				},
 				{
+					"sno": 4,
 					"player": "Pandey",
 					"highRankTeam": "DD",
 					"lowRankTeam": "MI",
