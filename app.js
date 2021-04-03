@@ -254,8 +254,6 @@ function calculateScore(winningTeam, highRankTeam, lowRankTeam, highPoint, lowPo
         // swap the team
         hrt = lowRankTeam;
         lrt = highRankTeam;
-        hp = lowPoint;
-        lp = highPoint;
     }
 
     if(!Negative){
