@@ -1,6 +1,7 @@
 const Negative = false;
 const selectElems = document.querySelectorAll('select');
 const matchSelector = document.querySelector('#matchSelector');
+const winnerSelector = document.querySelector('#winnerSelector');
 //var msInstance;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,22 +26,74 @@ loadEventListeners();
 function loadEventListeners(){
 
     teamBtn.addEventListener('click', getTeams);
+    matchSelector.addEventListener('change', matchSelected)
 
 }
 
 function dateSelected(){
     //debugger;
+    resetMatchSelector();
+    resetWinnerSelector();
+
     let chosenDate = date.value;
-    let option1 = document.createElement('option');
-    option1.value= 'RCB,CSK';
-    option1.innerHTML = 'RCB vs CSK';
-    matchSelector.appendChild(option1);
-    let option2 = document.createElement('option');
-    option2.value= 'MI,DD';
-    option2.innerHTML = 'MI vs DD';
-    matchSelector.appendChild(option2);
+    let teams = _getTeamsForGivenDate(chosenDate);
+    if (teams.length > 0){
+        teams.forEach(function(value){
+            let option = document.createElement('option');
+            option.value = value;
+            option.innerHTML = value;
+            matchSelector.appendChild(option);
+        });
+    }
     M.FormSelect.init(matchSelector, {});
 }
+
+function matchSelected(){
+
+
+    let matchSelectorInstance = M.FormSelect.getInstance(matchSelector);
+    matchSelectorInstance._setSelectedStates();
+    let selectedMatch = matchSelectorInstance.getSelectedValues()[0];
+    let selectedTeams = selectedMatch.split(',');
+    selectedTeams.forEach(function(value){
+        let option = document.createElement('option');
+        option.value = value;
+        option.innerHTML = value;
+        winnerSelector.appendChild(option);
+    });
+
+    M.FormSelect.init(winnerSelector,{});
+}
+
+function resetMatchSelector(){
+
+    matchSelector.innerHTML = '';
+
+    let emptyOption = document.createElement('option');
+    emptyOption.value="";
+    emptyOption.innerHTML='Select Match';
+    emptyOption.setAttribute('disabled','');
+    emptyOption.setAttribute('selected','');
+
+    matchSelector.appendChild(emptyOption);
+    M.FormSelect.init(matchSelector, {});
+}
+
+function resetWinnerSelector(){
+
+    winnerSelector.innerHTML = '';
+
+    let emptyOption = document.createElement('option');
+    emptyOption.value="";
+    emptyOption.innerHTML='Select Winner';
+    emptyOption.setAttribute('disabled','');
+    emptyOption.setAttribute('selected','');
+
+    winnerSelector.appendChild(emptyOption);
+    M.FormSelect.init(winnerSelector, {});
+}
+
+
 
 function getTeams(e){
    // debugger;
@@ -142,10 +195,19 @@ function callme(e){
     let gmdValue = document.getElementById('gmdcb'+sno).checked;
     console.log((gmdValue));
 
-    debugger;
-    const matchSelectorInstance = M.FormSelect.getInstance(matchSelector);
+    let matchSelectorInstance = M.FormSelect.getInstance(matchSelector);
     matchSelectorInstance._setSelectedStates();
-    console.log(matchSelectorInstance.getSelectedValues());
+    console.log(matchSelectorInstance.getSelectedValues()[0]);
+
+    let winnerSelectorInstance = M.FormSelect.getInstance(winnerSelector);
+    winnerSelectorInstance._setSelectedStates();
+    let winningTeam = winnerSelectorInstance.getSelectedValues()[0]; 
+    console.log(winnerSelectorInstance.getSelectedValues()[0]);
+
+
+    // calculate score
+    let score = calculateScore(winningTeam, highRankTeam, lowRankTeam, parseInt(highTeamPoint), parseInt(lowTeamPoint), abcValue, gmdValue)
+    alert(score);
 
 }
 
@@ -162,11 +224,26 @@ function getTeamsForGivenDate(date){
     return teams;
 }
 
+function _getTeamsForGivenDate(date){
+
+    let teams = [];
+    schedule.forEach(function(value){
+        if(value.date === date){
+            teams =  value.match;
+            return;
+        }
+    });
+
+    return teams;
+}
+
 function clearTable(){
     tbodyRef.innerHTML = '';
 }
 
 function calculateScore(winningTeam, highRankTeam, lowRankTeam, highPoint, lowPoint, abc, gmd){
+
+    //debugger;
     
     let hrt = highRankTeam;
     let lrt = lowRankTeam;
@@ -188,6 +265,12 @@ function calculateScore(winningTeam, highRankTeam, lowRankTeam, highPoint, lowPo
             }else{
                 return hp;
             }
+        } else{
+            if(gmd){
+                return -10;
+            }else{
+                return 0;
+            }
         }
     }else{
 
@@ -207,93 +290,3 @@ function calculateScore(winningTeam, highRankTeam, lowRankTeam, highPoint, lowPo
     }
 
 }
-
-// //Define UI vars
-
-// const form = document.querySelector('#task-form');
-// const taskList = document.querySelector('.collection');
-// const clearButton = document.querySelector('.clear-tasks');
-// const filter = document.querySelector('#filter');
-// const taskInput = document.querySelector('#task');
-
-// //Load all event listeners
-// loadEventListeners();
-
-// function loadEventListeners(){
-//     //Add task event
-//     form.addEventListener('submit', addTask);
-//     //Remove task event
-//     taskList.addEventListener('click', removeTask);
-//     //clear task event
-//     clearButton.addEventListener('click', clearTasks);
-//     //filter task event
-//     filter.addEventListener('keyup', filterTasks);
-// }
-
-// function addTask(e){
-    
-//     if(taskInput.value === ''){
-//         alert('Add a task');
-//     }
-
-//     // create a li element
-//     const li = document.createElement('li');
-//     //add class
-//     li.className = 'collection-item';
-//     //create a textNode and append to li
-//     li.appendChild(document.createTextNode(taskInput.value));
-//     //create a new link
-//     const link = document.createElement('a');
-//     //Add Class
-//     link.className = 'delete-item secondary-content';
-//     //add icon
-//     link.innerHTML = '<i class="tiny material-icons">delete</i>';
-//     //append link to li
-//     li.appendChild(link);
-
-//     //Appen li to ul
-//     taskList.appendChild(li);
-
-//     //clear input
-//     taskInput.value = '';
-
-//     e.preventDefault();
-// }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.fixed-action-btn');
-//     var instances = M.FloatingActionButton.init(elems, {
-//         direction : 'up'
-//     });
-//   });
-
-
-// function removeTask(e){
-
-//     if(e.target.parentElement.classList.contains('delete-item')){
-//         if(confirm('Are you sure')){
-//             e.target.parentElement.parentElement.remove();
-//         }
-//     }
-// }
-
-// function clearTasks(e){
-//     while(taskList.firstChild){
-//         taskList.removeChild(taskList.firstChild)
-//     }
-// }
-
-// function filterTasks(e){
-
-//     const text = e.target.value.toLowerCase();
-
-//     document.querySelectorAll('.collection-item').forEach(function(task){
-//         const item = task.firstChild.textContent;
-//         if(item.toLowerCase().indexOf(text) != -1){
-//             task.style.display = 'block';
-//         }else{
-//             task.style.display = 'none';
-//         }
-//     });
-
-// }

@@ -1,47 +1,47 @@
 const data =  [
 		{
-			"date": "31-03-2021",
-			"match" : "RCB,CSK",
+			"date": "09-04-2021",
+			"match" : "MI,RCB",
 			"teams": [
 				{
 					"sno": 0,
 					"player": "Nitesh",
 					"highRankTeam": "RCB",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 8,
-					"lowTeamPoint": 1
+					"lowRankTeam": "MI",
+					"highTeamPoint": 20,
+					"lowTeamPoint": 16
 				},
 				{
 					"sno": 1,
 					"player": "Adarsh",
 					"highRankTeam": "RCB",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 5,
-					"lowTeamPoint": 3
+					"lowRankTeam": "MI",
+					"highTeamPoint": 4,
+					"lowTeamPoint": 2
 				},
 				{
 					"sno": 2,
 					"player": "Kinshuk",
 					"highRankTeam": "RCB",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 6,
-					"lowTeamPoint": 2
+					"lowRankTeam": "MI",
+					"highTeamPoint": 20,
+					"lowTeamPoint": 1
 				},
 				{
 					"sno": 3,
 					"player": "Pallu",
-					"highRankTeam": "CSK",
+					"highRankTeam": "MI",
 					"lowRankTeam": "RCB",
-					"highTeamPoint": 4,
+					"highTeamPoint": 2,
 					"lowTeamPoint": 1
 				},
 				{
 					"sno": 4,
 					"player": "Pandey",
-					"highRankTeam": "CSK",
+					"highRankTeam": "MI",
 					"lowRankTeam": "RCB",
-					"highTeamPoint": 8,
-					"lowTeamPoint": 2
+					"highTeamPoint": 16,
+					"lowTeamPoint": 12
 				}
 			]
 		},
