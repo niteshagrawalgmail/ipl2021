@@ -6,42 +6,42 @@ const data =  [
 				{
 					"sno": 0,
 					"player": "Nitesh",
-					"highRankTeam": "RCB",
-					"lowRankTeam": "MI",
+					"highRankTeam": "MI",
+					"lowRankTeam": "RBC",
 					"highTeamPoint": 20,
 					"lowTeamPoint": 16
 				},
 				{
 					"sno": 1,
 					"player": "Adarsh",
-					"highRankTeam": "RCB",
-					"lowRankTeam": "MI",
-					"highTeamPoint": 4,
-					"lowTeamPoint": 2
+					"highRankTeam": "MI",
+					"lowRankTeam": "RCB",
+					"highTeamPoint": 16,
+					"lowTeamPoint": 8
 				},
 				{
 					"sno": 2,
 					"player": "Kinshuk",
-					"highRankTeam": "RCB",
-					"lowRankTeam": "MI",
-					"highTeamPoint": 20,
-					"lowTeamPoint": 1
+					"highRankTeam": "MI",
+					"lowRankTeam": "RCB",
+					"highTeamPoint": 16,
+					"lowTeamPoint": 8
 				},
 				{
 					"sno": 3,
 					"player": "Pallu",
-					"highRankTeam": "MI",
-					"lowRankTeam": "RCB",
-					"highTeamPoint": 2,
-					"lowTeamPoint": 1
+					"highRankTeam": "RCB",
+					"lowRankTeam": "MI",
+					"highTeamPoint": 20,
+					"lowTeamPoint": 12
 				},
 				{
 					"sno": 4,
 					"player": "Pandey",
 					"highRankTeam": "MI",
 					"lowRankTeam": "RCB",
-					"highTeamPoint": 16,
-					"lowTeamPoint": 12
+					"highTeamPoint": 12,
+					"lowTeamPoint": 2
 				}
 			]
 		},
@@ -52,42 +52,42 @@ const data =  [
 				{
 					"sno": 0,
 					"player": "Nitesh",
-					"highRankTeam": "DC",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 8,
+					"highRankTeam": "CSK",
+					"lowRankTeam": "DC",
+					"highTeamPoint": 12,
 					"lowTeamPoint": 4
 				},
 				{
 					"sno": 1,
 					"player": "Adarsh",
-					"highRankTeam": "DC",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 12,
-					"lowTeamPoint": 6
+					"highRankTeam": "CSK",
+					"lowRankTeam": "DC",
+					"highTeamPoint": 20,
+					"lowTeamPoint": 12
 				},
 				{
 					"sno": 2,
 					"player": "Kinshuk",
 					"highRankTeam": "DC",
 					"lowRankTeam": "CSK",
-					"highTeamPoint": 16,
-					"lowTeamPoint": 8
+					"highTeamPoint": 20,
+					"lowTeamPoint": 4
 				},
 				{
 					"sno": 3,
 					"player": "Pallu",
-					"highRankTeam": "DC",
-					"lowRankTeam": "CSK",
-					"highTeamPoint": 12,
-					"lowTeamPoint": 6
+					"highRankTeam": "CSK",
+					"lowRankTeam": "DC",
+					"highTeamPoint": 16,
+					"lowTeamPoint": 1
 				},
 				{
 					"sno": 4,
 					"player": "Pandey",
-					"highRankTeam": "CSK",
-					"lowRankTeam": "DC",
-					"highTeamPoint": 8,
-					"lowTeamPoint": 4
+					"highRankTeam": "DC",
+					"lowRankTeam": "CSK",
+					"highTeamPoint": 16,
+					"lowTeamPoint": 6
 				}
 			]
 		}
