@@ -19,6 +19,7 @@ const date = document.querySelector('#date');
 const teamBtn = document.querySelector('#teamBtn');
 const table = document.querySelector('#teamTable');
 const tbodyRef = table.getElementsByTagName('tbody')[0];
+const matchBetween = document.querySelector('#matchBetween');
 
 
 loadEventListeners();
@@ -34,6 +35,7 @@ function dateSelected(){
     //debugger;
     resetMatchSelector();
     resetWinnerSelector();
+    resetMatchBetween();
 
     let chosenDate = date.value;
     let teams = _getTeamsForGivenDate(chosenDate);
@@ -48,8 +50,15 @@ function dateSelected(){
     M.FormSelect.init(matchSelector, {});
 }
 
+function resetMatchBetween(){
+    matchBetween.value = '';
+}
+
 function matchSelected(){
 
+    let teamVsPlayers = [];
+    let chosenDate = date.value;
+    let teams = getTeamsForGivenDate(chosenDate);
 
     let matchSelectorInstance = M.FormSelect.getInstance(matchSelector);
     matchSelectorInstance._setSelectedStates();
@@ -60,9 +69,24 @@ function matchSelected(){
         option.value = value;
         option.innerHTML = value;
         winnerSelector.appendChild(option);
+
+        //
+
+        
+        teamVsPlayers.push(new TeamVsPlayers(value,getPlayersForTeam(value, teams)));
+
     });
 
+    
+    let vs = getFormattedTextForVersus(teamVsPlayers);
+    matchBetween.value = vs;
+    
     M.FormSelect.init(winnerSelector,{});
+}
+
+function TeamVsPlayers(team, players){
+    this.team = team;
+    this.players = players;
 }
 
 function resetMatchSelector(){
@@ -286,5 +310,47 @@ function calculateScore(winningTeam, highRankTeam, lowRankTeam, highPoint, lowPo
             }
         }
     }
+
+}
+
+function getPlayersForTeam(team, teams) {
+
+    let players = [];
+
+    if (teams.length > 0){
+        teams.forEach(function(value){
+
+            if(value.highRankTeam === team){
+                players.push(value.player);
+            }
+
+        });
+    }
+    return players;
+}
+
+function getFormattedTextForVersus(teamAndPlayers){
+
+    
+    let formattedText = "";
+    let count = 0;
+
+    teamAndPlayers.forEach(function(value){
+
+        formattedText += '[' + value.team + ']';
+        formattedText += '-';
+        let players = value.players;
+        players.forEach(function(p){
+            formattedText += p;
+            formattedText += ' ';
+        });
+        if(count === 0){
+            formattedText += 'vs ';
+        }
+        count ++;
+
+    });
+
+    return formattedText;
 
 }
