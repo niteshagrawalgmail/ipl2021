@@ -207,7 +207,7 @@ function callme(e){
 
     // calculate score
     let score = calculateScore(winningTeam, highRankTeam, lowRankTeam, parseInt(highTeamPoint), parseInt(lowTeamPoint), abcValue, gmdValue)
-    alert('score ' + score);
+    alert(playerName + ' scored :  ' + score);
 
 }
 
